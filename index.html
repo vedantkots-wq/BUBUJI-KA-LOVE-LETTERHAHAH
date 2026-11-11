@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HAII JII</title>
+
+<!-- Google Fonts for Modern Botanical & Royal Aesthetic -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:auto;
+}
+
+body{
+    background:#071318;
+    color:#f0fdf4;
+    overflow-x:hidden;
+    font-family:'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* =========================================================
+   COLORS & THEME (Midnight Emerald & Royal Gold)
+========================================================= */
+
+:root{
+    --gold: #f3e5ab;
+    --gold-deep: #d4af37;
+    --gold-bright: #ffe875;
+    --champagne: #faedcd;
+    --emerald-deep: #051923;
+    --emerald-light: #134e4a;
+    --text-main: #f0fdf4;
+    --text-muted: #cbd5e1;
+}
+
+
+/* =========================================================
+   MODERN FLORAL & ROYAL SPARKLE BACKGROUND EFFECTS
+========================================================= */
+
+.floral-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 30%, #0d2830 0%, #071318 60%, #02080a 100%);
+}
+
+.floating-flower {
+    position: absolute;
+    opacity: 0.25;
+    font-size: clamp(24px, 5vw, 55px);
+    animation: floatFlower linear infinite;
+    user-select: none;
+    filter: drop-shadow(0 0 8px rgba(243, 229, 171, 0.4));
+}
+
+@keyframes floatFlower {
+    0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg) scale(1.25);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:var(--text-main);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #0f303f 0%,
+            #071922 65%,
+            #02080a 100%
+        );
+
+    transition:
+
+        opacity 1.4s cubic-bezier(.77,0,.18,1),
+
+        visibility 1.4s;
+
+}
+
+#intro.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+}
+
+.intro-small{
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size:13px;
+
+    letter-spacing:6px;
+
+    opacity:.9;
+
+    margin-bottom:24px;
+
+    color: var(--gold);
+    text-shadow: 0 0 15px rgba(243,229,171,0.5);
+
+}
+
+.intro-title{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(
+            55px,
+            11vw,
+            150px
+        );
+
+    line-height:.9;
+
+    font-weight:600;
+
+}
+
+.intro-title em{
+
+    color:var(--gold);
+
+    font-style:italic;
+    text-shadow: 0 0 25px rgba(243,229,171,0.4);
+
+}
+
+.enter{
+
+    margin-top:45px;
+
+    padding:18px 42px;
+
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(243, 229, 171, 0.1));
+
+    border: 1px solid rgba(243, 229, 171, 0.6);
+
+    border-radius:100px;
+
+    color:var(--gold);
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:13px;
+
+    font-weight: 700;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.4s ease;
+
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    position: relative;
+    z-index: 5001;
+
+}
+
+.enter:hover{
+
+    background:var(--gold);
+
+    color:#071318;
+
+    transform:translateY(-3px);
+
+    box-shadow: 0 10px 35px rgba(243, 229, 171, 0.6);
+
+}
+
+
+/* =========================================================
+   MAIN SCROLL LENGTH
+========================================================= */
+
+.stage{
+
+    height:1400vh;
+
+    position:relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   CINEMATIC VIEWPORT
+========================================================= */
+
+.viewport{
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+
+    width:100%;
+
+    overflow:hidden;
+
+    background: transparent;
+
+}
+
+
+/* =========================================================
+   AMBIENT GLOWS
+========================================================= */
+
+.light{
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    pointer-events:none;
+
+    z-index: 1;
+
+}
+
+.light.one{
+
+    left:-200px;
+
+    top:-200px;
+
+    background:#0e4f5c;
+
+    opacity:.35;
+
+}
+
+.light.two{
+
+    right:-200px;
+
+    bottom:-200px;
+
+    background:#1b6b59;
+
+    opacity:.25;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:absolute;
+
+    top:30px;
+
+    left:40px;
+
+    right:40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    z-index:100;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:12px;
+
+    font-weight: 700;
+
+    letter-spacing:3px;
+
+    color:var(--gold);
+    text-shadow: 0 0 10px rgba(243,229,171,0.4);
+
+}
+
+.header-right{
+
+    opacity:.9;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    z-index:10;
+
+}
+
+.hero-inner{
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+.hero-small{
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:13px;
+
+    font-weight: 700;
+
+    letter-spacing:6px;
+
+    color:var(--gold);
+
+    margin-bottom:24px;
+
+    opacity: 0.95;
+    text-shadow: 0 0 10px rgba(243,229,171,0.4);
+
+}
+
+.hero h1{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(
+            65px,
+            13vw,
+            160px
+        );
+
+    line-height:.9;
+
+    letter-spacing:-1px;
+
+    font-weight:600;
+
+}
+
+.hero h1 span{
+
+    display:block;
+
+}
+
+.hero h1 em{
+
+    color:var(--gold);
+
+    font-style:italic;
+    text-shadow: 0 0 25px rgba(243,229,171,0.5);
+
+}
+
+.hero-bottom{
+
+    margin-top:40px;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:12px;
+
+    font-weight: 700;
+
+    letter-spacing:4px;
+
+    color:var(--gold);
+
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(243,229,171,0.4);
+
+}
+
+
+/* =========================================================
+   INTERACTIVE GAMES / QUIZZES
+========================================================= */
+
+.game-scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 45;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.game-card {
+    background: rgba(10, 32, 40, 0.95);
+    border: 1.5px solid rgba(243, 229, 171, 0.7);
+    border-radius: 20px;
+    padding: 30px;
+    width: min(500px, 90vw);
+    text-align: center;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 35px rgba(212,175,55,0.3);
+    position: relative;
+    z-index: 46;
+}
+
+.game-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 4.5vw, 34px);
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.game-card p {
+    font-size: 13px;
+    color: var(--champagne);
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-btn {
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(243, 229, 171, 0.4);
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    z-index: 47;
+}
+
+.quiz-btn:hover {
+    background: rgba(243, 229, 171, 0.3);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.quiz-feedback {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 18px;
+}
+
+/* Love Tank Meter Styles */
+.progress-bar-bg {
+    width: 100%;
+    height: 24px;
+    background: rgba(5, 25, 35, 0.9);
+    border: 1px solid rgba(243, 229, 171, 0.5);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37, #ffe875, #ff0055);
+    border-radius: 30px;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 15px rgba(255, 232, 117, 0.6);
+}
+
+.meter-val {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.charge-btn {
+    background: linear-gradient(135deg, #d4af37, #f3e5ab);
+    border: none;
+    padding: 15px 32px;
+    border-radius: 100px;
+    color: #071318;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(243, 229, 171, 0.4);
+    transition: transform 0.1s ease;
+    user-select: none;
+    position: relative;
+    z-index: 47;
+}
+
+.charge-btn:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================================
+   ORBIT SYSTEM
+========================================================= */
+
+.orbit-system{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    left:0;
+
+    top:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    perspective:1200px;
+
+    opacity:0;
+
+    z-index:20;
+
+    pointer-events: none;
+
+}
+
+
+/* CENTRAL MEMORY */
+
+.center-memory{
+
+    position:absolute;
+
+    width:
+
+        clamp(
+            200px,
+            28vw,
+            300px
+        );
+
+    aspect-ratio:1/1;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 20px 50px
+        rgba(0,0,0,0.7),
+        0 0 45px rgba(212,175,55,0.5);
+
+    z-index:30;
+
+    border: 3px solid rgba(243, 229, 171, 0.9);
+
+    background: #092028;
+
+}
+
+.center-memory img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    filter:
+
+        saturate(1.15)
+        contrast(1.05);
+
+}
+
+.center-memory::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle,
+            transparent 55%,
+            rgba(5, 25, 35, 0.5)
+        );
+
+}
+
+
+/* =========================================================
+   ORBIT RINGS
+========================================================= */
+
+.ring{
+
+    position:absolute;
+
+    width:480px;
+
+    height:480px;
+
+    border:
+
+        1px dashed
+        rgba(243,229,171,0.5);
+
+    border-radius:50%;
+
+    transform:
+
+        rotateX(68deg)
+        rotateZ(0deg);
+
+    box-shadow: 0 0 15px rgba(212,175,55,0.15);
+
+}
+
+.ring.two{
+
+    width:700px;
+
+    height:700px;
+
+    transform:
+
+        rotateX(68deg)
+        rotateZ(22deg);
+
+    opacity:.8;
+
+}
+
+.ring.three{
+
+    width:900px;
+
+    height:900px;
+
+    transform:
+
+        rotateX(68deg)
+        rotateZ(-18deg);
+
+    opacity:.5;
+
+}
+
+
+/* =========================================================
+   ORBIT PHOTOS
+========================================================= */
+
+.orbit-photo{
+
+    position:absolute;
+
+    width:
+
+        clamp(
+            110px,
+            15vw,
+            170px
+        );
+
+    background: rgba(10, 32, 40, 0.9);
+
+    padding: 8px;
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(12px);
+
+    border: 1.5px solid rgba(243, 229, 171, 0.6);
+
+    box-shadow:
+
+        0 20px 40px
+        rgba(0,0,0,0.7),
+        0 0 15px rgba(212,175,55,0.25);
+
+    transform-style:preserve-3d;
+
+    will-change:
+        transform;
+
+}
+
+.orbit-photo img{
+
+    display:block;
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+    object-position:center;
+
+    border-radius: 10px;
+
+    filter:
+
+        saturate(1.1);
+
+}
+
+.orbit-caption{
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size:14px;
+
+    font-weight: 600;
+
+    font-style:italic;
+
+    padding:7px 2px 3px;
+
+    text-align: center;
+
+    color:var(--gold);
+
+}
+
+
+/* =========================================================
+   ORBIT LABEL
+========================================================= */
+
+.orbit-label{
+
+    position:absolute;
+
+    bottom:8%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:12px;
+
+    font-weight: 700;
+
+    letter-spacing:4px;
+
+    color:var(--gold);
+
+    background: rgba(10, 32, 40, 0.9);
+
+    padding: 10px 24px;
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(243,229,171,0.5);
+
+    box-shadow: 0 0 20px rgba(212,175,55,0.25);
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    z-index:40;
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.message-inner{
+
+    transform:scale(.8);
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+.message h2{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(
+            45px,
+            8.5vw,
+            110px
+        );
+
+    line-height:.95;
+
+    font-weight:600;
+
+    letter-spacing:-1px;
+
+}
+
+.message h2 em{
+
+    color:var(--gold);
+
+    font-style: italic;
+    text-shadow: 0 0 25px rgba(243,229,171,0.5);
+
+}
+
+.message p{
+
+    margin-top:30px;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:26px;
+
+    font-style:italic;
+
+    color:var(--gold);
+
+    opacity: 0.95;
+
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope-scene{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    perspective:1500px;
+
+    opacity:0;
+
+    z-index:50;
+
+    pointer-events: none;
+
+}
+
+.envelope{
+
+    position:relative;
+
+    width:
+        min(
+            600px,
+            90vw
+        );
+
+    height:
+        min(
+            410px,
+            64vw
+        );
+
+    transform-style:preserve-3d;
+    
+    overflow: hidden;
+    border-radius: 14px;
+
+}
+
+
+/* BACK */
+
+.env-back{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0a2533,
+            #041017
+        );
+
+    border-radius: 14px;
+
+    box-shadow:
+
+        0 40px 90px
+        rgba(0,0,0,0.8),
+        0 0 30px rgba(212,175,55,0.2);
+
+    border: 1.5px solid rgba(243,229,171,0.6);
+
+}
+
+
+/* LETTER */
+
+.letter{
+
+    position:absolute;
+
+    width:90%;
+
+    height:135%;
+
+    left:5%;
+
+    top:25%;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #fefae0,
+            #faedcd
+        );
+
+    color: #0c1b22;
+
+    padding:
+
+        45px;
+
+    z-index:3;
+
+    border-radius: 12px;
+
+    transform:
+
+        translateY(0);
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,0.7);
+
+    border: 1.5px solid rgba(212, 175, 55, 0.7);
+
+}
+
+.letter-border{
+
+    position:absolute;
+
+    inset:16px;
+
+    border:
+
+        1.5px solid
+        rgba(180, 138, 45, 0.5);
+
+    border-radius: 8px;
+
+}
+
+.letter h3{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:34px;
+
+    font-weight: 700;
+
+    font-style:italic;
+
+    color:#092028;
+
+    margin-bottom:18px;
+
+}
+
+.letter-text{
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:15px;
+
+    font-weight: 500;
+
+    line-height:1.7;
+    
+    color: #112933;
+
+}
+
+.letter-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 22px;
+}
+
+.signature{
+
+    color:#092028;
+
+    font-size:25px;
+
+    font-weight: 700;
+
+    font-style:italic;
+
+    font-family:'Cormorant Garamond', serif;
+
+}
+
+
+/* =========================================================
+   LIPSTICK KISS ANIMATION
+========================================================= */
+
+.kiss-stamp {
+    position: relative;
+    width: 65px;
+    height: 35px;
+    transform: rotate(-12deg) scale(0);
+    transform-origin: center;
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.letter.kiss-active .kiss-stamp {
+    transform: rotate(-12deg) scale(1);
+    opacity: 0.95;
+    animation: kissPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes kissPulse {
+    0% { transform: rotate(-12deg) scale(1); }
+    100% { transform: rotate(-12deg) scale(1.08); }
+}
+
+.kiss-svg {
+    width: 100%;
+    height: 100%;
+    fill: #d90429;
+    filter: drop-shadow(0 2px 4px rgba(180, 20, 50, 0.4));
+}
+
+
+/* FLAP */
+
+.flap{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0e3947,
+            #072028
+        );
+
+    clip-path:
+
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0
+        );
+
+    border-top-left-radius: 14px;
+
+    border-top-right-radius: 14px;
+
+    transform-origin:top center;
+
+    z-index:6;
+
+    border-top: 1.5px solid rgba(243,229,171,0.7);
+
+}
+
+
+/* FRONT */
+
+.env-front{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #0a2c38,
+            #051821
+        );
+
+    clip-path:
+
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 14px;
+
+    z-index:5;
+
+    border-bottom: 1.5px solid rgba(243,229,171,0.6);
+
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:var(--text-main);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #0f303f 0%,
+            #071922 55%,
+            #02080a 100%
+        );
+
+    opacity:0;
+
+    visibility:hidden;
+
+    z-index:200;
+
+    padding: 20px;
+    pointer-events: none;
+
+}
+
+.final-inner{
+
+    width: 100%;
+    max-width: 580px;
+    opacity:0;
+
+    transform:translateY(40px);
+    margin: 0 auto;
+
+}
+
+.final-small{
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    font-size:12px;
+
+    font-weight: 700;
+
+    letter-spacing:5px;
+
+    opacity:.9;
+
+    margin-bottom:16px;
+
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(243,229,171,0.5);
+
+}
+
+.final h2{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(
+            42px,
+            9.5vw,
+            90px
+        );
+
+    line-height:0.95;
+
+    font-weight:600;
+
+    margin-bottom: 20px;
+
+}
+
+.final h2 em{
+
+    color:var(--gold);
+    text-shadow: 0 0 20px rgba(243,229,171,0.5);
+
+}
+
+.final p{
+
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size: clamp(18px, 4vw, 24px);
+
+    line-height: 1.55;
+
+    font-style:italic;
+
+    opacity:.95;
+
+    color: var(--gold);
+
+}
+
+.heart{
+
+    margin-top:24px;
+
+    font-size:32px;
+
+    color:var(--gold);
+
+    animation:
+
+        heartbeat 1.5s infinite;
+
+    filter: drop-shadow(0 0 10px rgba(243,229,171,0.6));
+
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.25);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS
+========================================================= */
+
+@media(max-width:700px){
+
+    .header{
+        left:20px;
+        right:20px;
+    }
+
+    .ring{
+        width:320px;
+        height:320px;
+    }
+
+    .ring.two{
+        width:460px;
+        height:460px;
+    }
+
+    .ring.three{
+        width:580px;
+        height:580px;
+    }
+
+    .orbit-photo{
+        width:95px;
+    }
+
+    .center-memory{
+        width:150px;
+    }
+
+    .letter{
+        padding:22px 18px;
+        height: 140%;
+        top: 25%;
+    }
+
+    .letter h3{
+        font-size:22px;
+        margin-bottom: 12px;
+    }
+
+    .letter-text{
+        font-size:13px;
+        line-height: 1.6;
+    }
+
+    .kiss-stamp {
+        width: 48px;
+        height: 26px;
+    }
+
+    .final {
+        padding: 15px;
+    }
+
+    .final-inner {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 10px 0;
+    }
+
+    .final-small {
+        font-size: 11px;
+        letter-spacing: 4px;
+        margin-bottom: 12px;
+    }
+
+    .final h2 {
+        font-size: clamp(36px, 11vw, 52px);
+        margin-bottom: 14px;
+    }
+
+    .final p {
+        font-size: clamp(16px, 4.2vw, 20px);
+        line-height: 1.5;
+    }
+
+    .heart {
+        margin-top: 18px;
+        font-size: 28px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MODERN FLORAL & ROYAL SPARKLE BACKGROUND ELEMENTS
+===================================================== -->
+
+<div class="floral-bg">
+    <div class="floating-flower" style="left: 10%; animation-duration: 12s; animation-delay: 0s;">🌿</div>
+    <div class="floating-flower" style="left: 25%; animation-duration: 15s; animation-delay: 2s;">✨</div>
+    <div class="floating-flower" style="left: 45%; animation-duration: 13s; animation-delay: 1s;">👑</div>
+    <div class="floating-flower" style="left: 65%; animation-duration: 16s; animation-delay: 4s;">✨</div>
+    <div class="floating-flower" style="left: 85%; animation-duration: 14s; animation-delay: 2s;">🌿</div>
+</div>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<div id="intro">
+
+    <div>
+
+        <div class="intro-small">
+            BUBUJI KA LOVE-LETTER😘
+        </div>
+
+        <div class="intro-title">
+
+            APKE LIYE
+
+            <br>
+
+            <em>HAII JIII</em>
+
+        </div>
+
+        <button
+            class="enter"
+            onclick="startExperience()">
+
+            LVKRR UGHADDDD
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC (ADD YOUR SONG HERE)
+===================================================== -->
+
+<audio
+    id="music"
+    loop
+    preload="auto">
+
+    <!-- Put your song file in the same folder and name it 'song.mp3' -->
+    <source
+        src="song.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================================
+     SCROLL STAGE
+===================================================== -->
+
+<div class="stage">
+
+<div class="viewport">
+
+
+    <!-- LIGHT -->
+
+    <div class="light one"></div>
+
+    <div class="light two"></div>
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+            MWAHH💋💋
+        </div>
+
+        <div class="header-right">
+            EK CHOTA TOFA
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <div class="hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-small">
+              SOMETHING I WANTED TO SAY
+            </div>
+
+            <h1>
+
+                <span>
+                    For
+                </span>
+
+                <span>
+                    <em>you.</em>
+                </span>
+
+            </h1>
+
+            <div class="hero-bottom">
+               HALU JAA KHALII!!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         INTERACTIVE GAME 1: QUIZ 1
+    ================================================== -->
+
+    <div class="game-scene" id="quizScene1">
+        <div class="game-card">
+            <h3>🔐 Security Quiz #1</h3>
+            <p>Babes Last Time Kuthe bhetlelo</p>
+            <div class="quiz-options">
+                <button class="quiz-btn" onclick="answerQuiz(1, true, this)">FC ROAD</button>
+                <button class="quiz-btn" onclick="answerQuiz(1, false, this)">BT </button>
+            </div>
+            <div class="quiz-feedback" id="feedback1"></div>
+        </div>
+    </div>
+
+
+    <!-- =================================================
+         INTERACTIVE GAME 2: QUIZ 2
+    ================================================== -->
+
+    <div class="game-scene" id="quizScene2">
+        <div class="game-card">
+            <h3>🔐 Security Quiz #2</h3>
+            <p>Sbse best din konsa tha </p>
+            <div class="quiz-options">
+                <button class="quiz-btn" onclick="answerQuiz(2, false, this)">09-08-2025</button>
+                <button class="quiz-btn" onclick="answerQuiz(2, true, this)">09-02-2024</button>
+            </div>
+            <div class="quiz-feedback" id="feedback2"></div>
+        </div>
+    </div>
+
+
+    <!-- =================================================
+         INTERACTIVE GAME 3: QUIZ 3
+    ================================================== -->
+
+    <div class="game-scene" id="quizScene3">
+        <div class="game-card">
+            <h3>🔐 Security Quiz #3</h3>
+            <p>Who is the absolute cutest person alive?</p>
+            <div class="quiz-options">
+                <button class="quiz-btn" onclick="answerQuiz(3, true, this)">Vedu Donnn</button>
+                <button class="quiz-btn" onclick="answerQuiz(3, false, this)">Koi Aur🙄</button>
+            </div>
+            <div class="quiz-feedback" id="feedback3"></div>
+        </div>
+    </div>
+
+
+    <!-- =================================================
+         INTERACTIVE GAME 4: LOVE METER
+    ================================================== -->
+
+    <div class="game-scene" id="meterScene">
+        <div class="game-card">
+            <h3>⚡ Charge The Love Tank!</h3>
+            <p>Tap repeatedly to fill the meter to 100%!</p>
+            <div class="progress-bar-bg">
+                <div class="progress-fill" id="meterFill"></div>
+                <div class="meter-val" id="meterText">0%</div>
+            </div>
+            <button class="charge-btn" onclick="chargeMeter()">TAP TO CHARGE 💖</button>
+        </div>
+    </div>
+
+
+    <!-- =================================================
+         ORBIT SYSTEM
+    ================================================== -->
+
+    <div class="orbit-system">
+
+        <div class="ring"></div>
+
+        <div class="ring two"></div>
+
+        <div class="ring three"></div>
+
+
+        <!-- CENTRAL MEMORY -->
+
+        <div class="center-memory">
+
+            <img
+                src="photos/photo1.jpg">
+
+        </div>
+
+
+        <!-- ORBIT PHOTO 1 -->
+
+        <div class="orbit-photo"
+             data-radius="240"
+             data-angle="0">
+
+            <img
+                src="photos/photo2.jpg">
+
+            <div class="orbit-caption">
+                that smile.
+            </div>
+
+        </div>
+
+
+        <!-- ORBIT PHOTO 2 -->
+
+        <div class="orbit-photo"
+             data-radius="330"
+             data-angle="90">
+
+            <img
+                src="photos/photo3.jpg">
+
+            <div class="orbit-caption">
+                favourite.
+            </div>
+
+        </div>
+
+
+        <!-- ORBIT PHOTO 3 -->
+
+        <div class="orbit-photo"
+             data-radius="240"
+             data-angle="180">
+
+            <img
+                src="photos/photo4.jpg">
+
+            <div class="orbit-caption">
+                just us.
+            </div>
+
+        </div>
+
+
+        <!-- ORBIT PHOTO 4 -->
+
+        <div class="orbit-photo"
+             data-radius="330"
+             data-angle="270">
+
+            <img
+                src="photos/photo5.jpg">
+
+            <div class="orbit-caption">
+                memory.
+            </div>
+
+        </div>
+
+
+        <div class="orbit-label">
+         BABESSSS APLEEEE FAVVV💞💗😁
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MESSAGE
+    ================================================== -->
+
+    <div class="message">
+
+        <div class="message-inner">
+
+            <h2>
+
+               Samrudddhiii!! <br>
+
+                apke pyar me khoya hua😁<br>
+
+                <em>ye yeda ashiq.</em>
+
+            </h2>
+
+            <p>
+
+              Aur apko iski jhalak bhi nahi😎
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ENVELOPE
+    ================================================== -->
+
+    <div class="envelope-scene">
+
+        <div class="envelope">
+
+            <div class="env-back"></div>
+
+
+            <div class="letter">
+
+                <div class="letter-border"></div>
+
+                <h3>
+                    Meri Goaduuu🤗🤗
+                </h3>
+
+                <div class="letter-text">
+
+                    Somewhere between all the
+                    random conversations,
+
+                    <br>
+
+                    the stupid jokes,
+
+                    <br>
+
+                    the little moments,
+
+                    <br>
+
+                    and all the memories...
+
+                    <br><br>
+
+                    you became someone
+                    incredibly special to me.
+
+                    <br><br>
+
+                    And if I could keep one thing
+                    from all these days,
+
+                    it would be every moment
+                    I've spent with you.💖💖💖
+
+                </div>
+
+                <div class="letter-footer">
+                    <div class="signature">
+                        Always,
+                        <br>
+                        yours ❤️
+                    </div>
+
+                    <div class="kiss-stamp" id="kissStamp">
+                        <svg class="kiss-svg" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 5,22 C 20,5 40,25 50,15 C 60,25 80,5 95,22 C 82,32 68,18 50,28 C 32,18 18,32 5,22 Z"/>
+                            <path d="M 5,24 C 22,42 45,28 50,38 C 55,28 78,42 95,24 C 80,45 60,40 50,45 C 40,40 20,45 5,24 Z"/>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="flap"></div>
+
+            <div class="env-front"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FINAL
+    ================================================== -->
+
+    <div class="final">
+
+        <div class="final-inner">
+
+            <div class="final-small">
+                ✨ ONE LAST THING ✨
+            </div>
+
+            <h2>
+
+           I Love Youu<br>
+
+                 <em>madam jiii!!</em>
+
+            </h2>
+
+            <p>
+
+              mi tula kadhich sodnr nahiyee babes kitihi kahihii houde ur mine now always and forever😭💕💗💗
+
+                <br><br>
+
+                And honestly!!
+Apka hi fan huuu💝
+
+            </p>
+
+            <div class="heart">
+                👑♥👑
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SCROLL & POSITION FIX
+========================================================= */
+
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
+
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    targetProgress = 0;
+    smoothProgress = 0;
+});
+
+
+/* =========================================================
+   MUSIC & INTRO START
+========================================================= */
+
+const music = document.getElementById("music");
+
+function startExperience(){
+    music.volume = 0.42;
+    music.play().catch(()=>{});
+
+    const intro = document.getElementById("intro");
+    intro.classList.add("hide");
+    
+    window.scrollTo(0, 0);
+    targetProgress = 0;
+}
+
+
+/* =========================================================
+   GAME LOGIC (FIXED CLICKABILITY)
+========================================================= */
+
+function answerQuiz(quizNum, isCorrect, btnElement) {
+    const feedback = document.getElementById("feedback" + quizNum);
+    const card = btnElement.closest('.game-card');
+    const buttons = card.querySelectorAll('.quiz-btn');
+    
+    buttons.forEach(b => {
+        b.style.pointerEvents = 'none';
+        b.style.opacity = '0.6';
+    });
+    
+    btnElement.style.opacity = '1';
+
+    if (isCorrect) {
+        btnElement.style.background = "rgba(74, 222, 128, 0.4)";
+        btnElement.style.borderColor = "#4ade80";
+        feedback.style.color = "#4ade80";
+        feedback.innerText = "Correct! Keep scrolling downward 🎉";
+    } else {
+        btnElement.style.background = "rgba(255, 107, 107, 0.4)";
+        btnElement.style.borderColor = "#ff6b6b";
+        feedback.style.color = "#ff6b6b";
+        feedback.innerText = "Wrong choice! (Scroll down anyway 😜)";
+    }
+}
+
+let meterPercent = 0;
+function chargeMeter() {
+    if (meterPercent < 100) {
+        meterPercent += 15;
+        if (meterPercent > 100) meterPercent = 100;
+        
+        document.getElementById("meterFill").style.width = meterPercent + "%";
+        document.getElementById("meterText").innerText = meterPercent + "%";
+        
+        if (meterPercent >= 100) {
+            document.getElementById("meterText").innerText = "1000% OVERLOADED! 💖🚀";
+        }
+    }
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+const stage = document.querySelector(".stage");
+const hero = document.querySelector(".hero");
+const heroInner = document.querySelector(".hero-inner");
+
+const quizScene1 = document.querySelector("#quizScene1");
+const quizScene2 = document.querySelector("#quizScene2");
+const quizScene3 = document.querySelector("#quizScene3");
+const meterScene = document.querySelector("#meterScene");
+
+const orbit = document.querySelector(".orbit-system");
+const photos = document.querySelectorAll(".orbit-photo");
+const message = document.querySelector(".message");
+const messageInner = document.querySelector(".message-inner");
+
+const envelopeScene = document.querySelector(".envelope-scene");
+const envelope = document.querySelector(".envelope");
+const flap = document.querySelector(".flap");
+const letter = document.querySelector(".letter");
+
+const final = document.querySelector(".final");
+const finalInner = document.querySelector(".final-inner");
+
+
+/* =========================================================
+   SMOOTH SCROLL ENGINE
+========================================================= */
+
+let targetProgress = 0;
+let smoothProgress = 0;
+let orbitTime = 0;
+let lastTime = performance.now();
+
+function clamp(v,min,max){
+    return Math.max(min, Math.min(max,v));
+}
+
+function ease(v){
+    return v*v*(3-2*v);
+}
+
+function lerp(a,b,t){
+    return a+(b-a)*t;
+}
+
+function updateTarget(){
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    targetProgress = clamp(window.scrollY / maxScroll, 0, 1);
+}
+
+
+/* =========================================================
+   ORBIT CALCULATION
+========================================================= */
+
+function updateOrbit(progress){
+    const orbitStart = .48;
+    const orbitEnd = .68;
+
+    let p = clamp((progress - orbitStart) / (orbitEnd - orbitStart), 0, 1);
+    p = ease(p);
+
+    orbit.style.opacity = p;
+
+    photos.forEach((photo, index) => {
+        const radius = Number(photo.dataset.radius);
+        const startingAngle = Number(photo.dataset.angle);
+
+        const speed = .0012 + index * .00015;
+        const angle = startingAngle + orbitTime * speed;
+        const rad = angle * Math.PI / 180;
+
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius * .52;
+        const depth = (Math.sin(rad) + 1) / 2;
+        const scale = .75 + depth * .25;
+        const z = Math.sin(rad) * 180;
+
+        photo.style.transform = `
+            translate3d(${x}px, ${y}px, ${z}px)
+            rotate(${-Math.sin(rad) * 8}deg)
+            scale(${scale})
+        `;
+
+        photo.style.zIndex = 10 + Math.round(depth * 20);
+    });
+}
+
+
+/* =========================================================
+   MAIN ANIMATION RENDER LOOP
+========================================================= */
+
+function render(time){
+    const dt = Math.min(time - lastTime, 40);
+    lastTime = time;
+
+    smoothProgress = lerp(smoothProgress, targetProgress, .075);
+    orbitTime += dt;
+
+    const p = smoothProgress;
+
+    /* HERO */
+    let heroP = ease(clamp(p / .12, 0, 1));
+    heroInner.style.transform = `
+        translateY(${-heroP * 100}px)
+        scale(${1 - heroP * .2})
+    `;
+    hero.style.opacity = 1 - heroP;
+
+
+    /* GAME 1: QUIZ 1 (0.08 to 0.25) */
+    let q1In = ease(clamp((p - .08) / .06, 0, 1));
+    let q1Out = ease(clamp((p - .19) / .06, 0, 1));
+    quizScene1.style.opacity = q1In * (1 - q1Out);
+    quizScene1.style.pointerEvents = (quizScene1.style.opacity > 0.05) ? "auto" : "none";
+
+
+    /* GAME 2: QUIZ 2 (0.21 to 0.38) */
+    let q2In = ease(clamp((p - .21) / .06, 0, 1));
+    let q2Out = ease(clamp((p - .32) / .06, 0, 1));
+    quizScene2.style.opacity = q2In * (1 - q2Out);
+    quizScene2.style.pointerEvents = (quizScene2.style.opacity > 0.05) ? "auto" : "none";
+
+
+    /* GAME 3: QUIZ 3 (0.34 to 0.51) */
+    let q3In = ease(clamp((p - .34) / .06, 0, 1));
+    let q3Out = ease(clamp((p - .45) / .06, 0, 1));
+    quizScene3.style.opacity = q3In * (1 - q3Out);
+    quizScene3.style.pointerEvents = (quizScene3.style.opacity > 0.05) ? "auto" : "none";
+
+
+    /* GAME 4: LOVE METER (0.47 to 0.64) */
+    let meterIn = ease(clamp((p - .47) / .06, 0, 1));
+    let meterOut = ease(clamp((p - .58) / .06, 0, 1));
+    meterScene.style.opacity = meterIn * (1 - meterOut);
+    meterScene.style.pointerEvents = (meterScene.style.opacity > 0.05) ? "auto" : "none";
+
+
+    /* ORBIT PHOTOS (0.48 to 0.68) */
+    updateOrbit(p);
+
+
+    /* MESSAGE (0.66 to 0.79) */
+    let msgIn = ease(clamp((p - .66) / .07, 0, 1));
+    let msgOut = ease(clamp((p - .75) / .06, 0, 1));
+    const msgOpacity = msgIn * (1 - msgOut);
+    message.style.opacity = msgOpacity;
+    messageInner.style.transform = `
+        scale(${.78 + msgIn * .22 - msgOut * .18})
+        translateY(${-msgOut * 100}px)
+    `;
+
+
+    /* ENVELOPE (0.77 to 0.91) */
+    let envP = ease(clamp((p - .77) / .09, 0, 1));
+    envelopeScene.style.opacity = envP;
+    envelope.style.transform = `
+        translateY(${(1 - envP) * 120}px)
+        scale(${.65 + envP * .35})
+        rotateX(${(1 - envP) * 18}deg)
+    `;
+
+    let flapP = ease(clamp((p - .84) / .04, 0, 1));
+    let slideP = ease(clamp((p - .87) / .06, 0, 1));
+
+    flap.style.transform = `rotateX(${-180 * flapP}deg)`;
+    letter.style.transform = `
+        translateY(${-340 * slideP}px)
+        scale(${1 + slideP * .05})
+    `;
+
+    if(slideP > 0.8) {
+        letter.classList.add('kiss-active');
+    } else {
+        letter.classList.remove('kiss-active');
+    }
+
+
+    /* FINAL (0.90 to 1.0) */
+    let finalP = ease(clamp((p - .90) / .10, 0, 1));
+    if(finalP > 0){
+        final.style.visibility = "visible";
+        final.style.pointerEvents = "auto";
+    } else {
+        final.style.visibility = "hidden";
+        final.style.pointerEvents = "none";
+    }
+
+    final.style.opacity = finalP;
+    final.style.transform = `scale(${1.08 - finalP * .08})`;
+    finalInner.style.opacity = finalP;
+    finalInner.style.transform = `translateY(${(1 - finalP) * 45}px)`;
+
+    requestAnimationFrame(render);
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    updateTarget,
+    {
+        passive: true,
+        capture: true
+    }
+);
+
+window.addEventListener(
+    "resize",
+    updateTarget
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+updateTarget();
+requestAnimationFrame(render);
+
+</script>
+
+</body>
+
+</html>
